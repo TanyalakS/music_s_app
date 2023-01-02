@@ -4,7 +4,6 @@ import 'package:audioplayers/audioplayers.dart';
 
 import 'music_item/music_item.dart';
 
-//after the song fix icon 'pause' // make screen looks finish
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -13,15 +12,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  AudioPlayer audioPlayer = AudioPlayer();
   List musicItem = MusicItem().musicItem;
   String currentTitle = '';
   String currentSinger = '';
   String currentImage = '';
-
-  AudioPlayer audioPlayer = AudioPlayer();
   bool isPlaying = false;
   bool isJustOpenApp = true;
-  bool isCompleted = true;
   String currentSong = "";
   int? playingSongIndex;
   Duration duration = const Duration(seconds: 0);
@@ -93,6 +90,7 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: [
                     Slider.adaptive(
+                      activeColor: Theme.of(context).backgroundColor,
                       value: position.inSeconds.toDouble(),
                       min: 0.0,
                       max: duration.inSeconds.toDouble() + 1,
